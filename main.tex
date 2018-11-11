@@ -245,4 +245,196 @@ We then have the following:
         &\lambda_2 = 1\\
     \end{align*}
 d.) Dropping the last term from objective function:\\
+    \begin{align*}
+        &\min 2x_1^2 -x_1x_2 + x_2^2 - 3x_1\\
+        &\nabla f(\bar x) = 
+        \begin{bmatrix}
+            4x_1 - x_2 -3\\
+            -x_1 + 2x_2\\
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+            0\\
+            0\\
+        \end{bmatrix}\\
+        &\bar x_1 = 1/2 \bar x_2\\
+        &4 \bar x_1 - 1/2 \bar x_1 - 3 = 0 \\ 
+        &7/2\bar x_1 = 3
+        &\bar x_1 = 6/7\\
+        &\bar x_2 = 3/7\\
+        &\bar = (6/7 , 3/7)\\ 
+    \end{align*}
+We then determine the $H(\bar x)$ matrix: 
+    \begin{align*}
+        &\nabla H(\bar x) = 
+        \begin{bmatrix}
+            4 & -1\\
+            -1 & 2\\
+        \end{bmatrix}\\
+        &det|H(\bar x)| = 7 > 0 \quad H(\bar x) \text{is PD}\\
+        &\min 2(6/7)^2 - (6/7)(3/7) + (3/7)^2 - 3 (6/7) = -9/7 
+    \end{align*}
+\section{BSS 4.7}
+We consider the following problem:\\
+\quad $\min (x_1 - 9/4)^2 + (x_2-2)^2$ \\
+\quad s.t.\\
+\quad $x_2 - x_1^2 \geq 0$\\
+\quad $x_1 + x_2 \leq 6$\\
+\quad $x_1 , x_2 \geq 0$\\
+We reformulate the problem: \\ 
+    \begin{align*}
+        &\min (x_1 - 9/4)^2 + (x_2-2)^2\\
+        &\text{s.t.} \\
+        &x_1^2 - x_2 \leq 0\\
+        &x_1 + x_2 \leq 0\\
+        &-x_1 \leq 0\\
+        &-x_2 \leq 0
+    \end{align*}
+a.) We find the following and adhere to the KKT conditions for $\bar x = (3/2 , 9/4) ^T$\\
+    \begin{align*}
+        &\nabla f(\bar x) + \sum_{i \in I} u_i \nabla g_i(\bar x) = 0\\
+        &\nabla f(\bar x) = 
+        \begin{bmatrix}
+            (4x_1 - 9)/2\\
+            2x_2 - 4\\
+        \end{bmatrix}\\
+        &\nabla f(\bar x) = 
+         \begin{bmatrix}
+            -3/2\\
+            1/2\\
+        \end{bmatrix} < 0 \\
+        &\nabla g_1(\bar x) = 
+         \begin{bmatrix}
+            2x_1\\
+            -1\\
+        \end{bmatrix} = 
+        \begin{bmatrix}
+            3\\
+            -1\\
+        \end{bmatrix}\\
+        &\nabla g_2(\bar x) = 
+         \begin{bmatrix}
+            1\\
+            1\\
+        \end{bmatrix}\\
+        &\nabla g_3(\bar x) = 
+         \begin{bmatrix}
+            -1\\
+            0\\
+        \end{bmatrix}\\
+        &\nabla g_4(\bar x) = 
+         \begin{bmatrix}
+            0\\
+            -1\\
+        \end{bmatrix}\\        
+    \end{align*}
+We then expand the KKT conditions: \\
+    \begin{align*}
+        &u_0 (-3/2 , 1/2)^T + u_1 (3, 1)^T + u_2 (1,1)^T + u_3(-1,0)^T + u_4(0,-1)^T = (0,0)^T\\
+        &\text{We let } u_2=u_3 = u_4 = 0 \\
+        &-3/2u_0 + 3u_1 = 0\\
+        &u_1 = 1/2 u_0\\
+        &1/2u_0 - u_1 = 0\\
+        &u_1 = 1/2 u_0\\
+        &\text{we let } u_0 = 1\\ 
+        &u_0 = 1\\
+        &u_1 = 1/2\\
+        &u_2 = u_3 = u_4 = 0\\ 
+        &u_i \geq 0
+    \end{align*}
+We find that $(3/2, 9/4)^T$ is  a KKT point.\\
+b.) We then represent the condition graphically: \\ 
+c.) We see that the objective function is convex, the constraints are convex. The feasible reagion is convex and identify that $(3/2, 9/4)^T$ is a KKT point. This adheres to the optimality and necessary conditions for KKT to demonstrate that $\bar x$ is local optimal solution and is a global optimal solution as well. \\
+\section{BSS 4.13}
+We have the following conditions for P and $\bar P$: We must write the KKT conditions for P and $\bar P$ and compare them. We will explain the difference between the 2.\\ 
+    \begin{align*}
+        &P: \quad \min f(x) \\
+        &\text{s.t.}\\
+        &g_i(x) \leq 0 \quad i = 1,...,m\\
+        &h_j(x) = 0 \quad j = 1, ..., l\\ 
+    \end{align*}
+    \begin{align*}
+        &\bar P \quad \min f(x) \\
+        &\text{s.t.}\\
+        &g_i(x) + s_i^2 = 0 \quad i = 1,...,m\\
+        &h_j(x) = 0 \quad j = 1, ..., l\\ 
+    \end{align*}
+We assume that $f, g_i, and h_j$ are twice differentiable and that $X \subseteq R^n$ is nonempty open set and $S$ is the feasible set. We do the following relaxation and include the constraints within the objective function so that we can have a unconstrained minimizing problem.\\ 
+    \begin{align*}
+        &\phi(x, u, v) = f(x) + \sum_{i=1}^{m} u_i g_i(x) + \sum_{j=1}^{l} v_jh_j(x)\\
+        &\text{We let $\bar x$ be a KKT Point for P and thus obtain \bar P}\\
+        &\bar P:  \quad \min L(x) = \phi(x, \bar u, \bar v) = f(x) + \sum_{i=1}^{m} \bar u_i g_i(x) + \sum_{j=1}^{l} \bar v_j h_j(x)\\
+        &x \in R^n
+    \end{align*}
+We find that the following conditions are true for $L(x)$: \\
+    \begin{align*}
+        &\sum_{i=1}^{m} \bar u_i g_i(x) \leq 0 \\
+        &\sum_{j=1}^{l} \bar v_j h_j(x) = 0
+    \end{align*}
+Comparing both $P$ and $\bar P$ we see $P \leq  \bar P$\\
+Thus we have $L(x) \leq f(x)$\\
+We can then conclude that $L(\bar x) = f(\bar x)$. We have $\bar x$ as a local/global min for P,\\
+    \begin{align*}
+        &L(\bar x) \leq L(x) \quad x \in N_\epsilon (\bar x)\\
+        &f(\bar x) = L(\bar x) \leq L(x) \leq f(x) \quad \forall x \in N_\epison (\bar x) \cap S\\
+        &F \cap G_0'
+    \end{align*}
+\section{BSS 4.37}
+We must consider the following problem: 
+    \begin{align*}
+        &\max x_1^2 + 4x_1x_2 + x_2^2\\
+        &\text{s.t.}\\
+        &x_1^2 + x_2^2 = 1
+    \end{align*}
+We reformulate the problem to obtain the primary minimizing problem:\\
+    \begin{align*}
+        &\min -x_1^2 - 4x_1x_2 - x_2^2\\
+        &\text{s.t.}\\
+        &-x_1^2 - x_2^2 = 1
+    \end{align*}
+a.) we find the KKT conditions for the minimizing reformulated problem:\\ 
+    \begin{align*}
+        &\nabla f(\bar x) = 
+        \begin{bmatrix}
+            -2x_1 - 4x_2 \\
+            -4x_1 - 2x_2 \\
+        \end{bmatrix} = 
+        \begin{bmatrix}
+            0 \\
+            0 \\
+        \end{bmatrix}\\
+        &h_1 = 
+        \begin{bmatrix}
+            -2x_1 \\
+            -2x_2 \\
+        \end{bmatrix}
+    \end{align*}
+We identify 4 solutions to the problem:\\
+    \begin{align*}
+        &(1/\sqrt{2}, 1/\sqrt{2}), v = 3 \\ 
+        &(-1/\sqrt{2}, -1/\sqrt{2}), v = 3 \\
+        &(1/\sqrt{2}, 1/\sqrt{2}), v = -1 \\
+        &(-1/\sqrt{2}, -1/\sqrt{2}), v = -1
+    \end{align*}
+We must consider constraint qualification (CQ) and determine that the KKT conditions are necessary for optimality.\\ 
+    \begin{align*}
+        &\bar x_1 = (1/\sqrt{2} ,1/\sqrt{2}) \\
+        &\bar x_2 = (-1/\sqrt{2} ,-1/\sqrt{2})
+    \end{align*}
+b.)We will test for the second order optimality conditions: \\
+We define L(x): \\
+    \begin{align*}
+        &L(x) = -x_1 - 4x-1x_2 - x_2^2 + v (-x_1^2 - x_2^2 -1)\\
+        &\nabla^2 L(x) = 2
+        \begin{bmatrix}
+            v- 1 & -2 \\
+            -2 & v-1\\ 
+        \end{bmatrix}
+    \end{align*}
+We can only find the second order optimality true when $v = 3$  and have $\nabla^2 L(x)$ as Positive Definite (PD). 
+c.) The unique optimal solution is found and demonstrated utilizing the KKT conditions and first and second order conditions for optimality thus finding the following as strict local optima.
+    \begin{align*}
+        &\bar x = (1/\sqrt{2}, 1/\sqrt{2}), v = 3 \\ 
+        &\bar x = (-1/\sqrt{2}, -1/\sqrt{2}), v = 3
+    \end{align*}
 \end{document}
